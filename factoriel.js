@@ -1,10 +1,12 @@
 const [nd, sc, c1] = process.argv;
 function fac(a){
   let nbre = parseInt(a);
-  //let fac;
+  let fac=1
 
   for (i=0 ; i<nbre ; i++){
-      console.log(nbre);
+    fac*=a;
+    a--;
   }
+  console.log(fac);
 }
 fac(c1);
