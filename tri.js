@@ -1,50 +1,51 @@
-//const [nd, sc, c1] = process.argv;
+const [nd, sc, c1] = process.argv;
 function tri (a) {
 
   let tab=[];
   let max;
-  let min;
+  let valeur;
   let index;
   let longer = a.length;
+  let pass = true;
   //console.log(longer);
   //conversion string argv en int
   for (x=0; x<longer; x++){
     tab[x]=parseInt(a[x]);
   }
+  console.log(tab);
+  // //tri bulle
 
-  // for(i=0;i<longer;i++){
-  //   for(j=0;j<longer-1;j++){
-  //     if(tab[j] < tab[j+1]){
-  //       max=tab[j+1];
-  //       tab[j+1]=tab[j];
-  //       tab[j]=max;
-  //     }
-  //   }
-  // }
-
-  for ( i=0 ; i<longer ; i++)
-  {
-    console.log('ds i'+i);
-    max=tab[i];
-    console.log(max);
-    for( j=0 ; j<longer ; j++)
-    {
-      console.log('ds j'+j);
-      index=j;
-      if ( max < tab[j])
-      {
-        console.log('ds if  de j'+j);
-        max=tab[j];
-        console.log(max);
-      }
+  while (pass) {
+    pass=false;
+    for(i=0;i<longer-1;i++){
+        if(tab[i] < tab[i+1]){
+          max=tab[i+1];
+          tab[i+1]=tab[i];
+          tab[i]=max;
+          pass=true;
+        }
     }
-    console.log(index);
-    console.log(max);
-    min=tab[i];
-    tab[i]=max;
-    tab[i+1]=min
     console.log(tab);
   }
+
+
+// tri par séletion
+  /*for ( i=0 ; i<longer ; i++){
+    valeur=max=tab[i];
+    pass=false
+    for( j=i ; j<longer-1; j++){
+      if ( max <= tab[j+1]){
+        max=tab[j+1];
+        index=j+1;
+        pass=true
+      }
+    }
+    if (pass) {
+      tab[index]=valeur;
+      tab[i]=max
+      console.log(tab);
+    }
+  }*/
 }
 
 tri(process.argv.slice(2));
