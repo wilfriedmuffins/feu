@@ -1,9 +1,5 @@
 const [nd, sc, c1, file] = process.argv;
-
-
 var fs = require('fs');
-
-
 var tab=[]
 var anag
 var word = []
