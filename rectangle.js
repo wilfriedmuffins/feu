@@ -11,41 +11,18 @@ var data2 = fs.readFileSync(file2, 'utf8').split("\n")
 // console.log(data1);
 // console.log(data2);
 //number of row and colunm
+row = data2.length
 colunm = data2[0].length
-row = data2.length-1
-// console.log(colunm);
-//console.log(row);
 
-var tab = new Array(colunm)
+var tab = new Array(row-1)
 //console.log(tab);
 var rec_ref
 var rec_test
 
-
-
-
-rec_ref = data2.toString().split("")
-//console.log(data2[0].slice(1, 2));
-
-
-// tab[i].push();
-// for (i=0; i<rec_ref.length ; i++){
-//   tab.push("");
-// }
-// console.log(tab);
-
-// if (rec_ref[i] == ','){
-//   console.log(rec_ref[i]);
-// }
-//var r=0
-for (var i=0 ; i<colunm; i++){
-  console.log(i);
+for (i=0 ; i<row-1; i++){
   tab[i]= new Array(row)
-  console.log(tab)
-  for (var j=0 ; j<3 ; j++){
-     //tab[i][j]= data2[i].slice(j, j+1)
-     console.log(data2[i].slice(j, j+1));
-     // console.log(j);
+  for (j=0 ; j<colunm ; j++){
+     tab[i][j]= data2[i].slice(j, j+1)
    }
-  //tab.push([]);
+  console.log(tab);
 }
