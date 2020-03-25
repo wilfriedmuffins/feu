@@ -6,6 +6,7 @@ var row1
 var colunm1
 var row2
 var colunm2
+var number=[]
 
 
 var data1 = fs.readFileSync(file1, 'utf8').split("\n")
@@ -27,17 +28,37 @@ var tab_ref = new Array(row2-1)
 for (i=0 ; i<row2-1; i++){
   tab_ref[i]= new Array(colunm2)
   for (j=0 ; j<colunm2 ; j++){
-     tab_ref[i][j]= data2[i].slice(j, j+1)
+     tab_ref[i][j]= parseInt(data2[i].slice(j, j+1))
    }
-   console.log(tab_ref);
 }
+
 
 var tab = new Array(row1-1)
 
 for (i=0 ; i<row1-1; i++){
   tab[i]= new Array(colunm1)
   for (j=0 ; j<colunm1 ; j++){
-     tab[i][j]= data1[i].slice(j, j+1)
+     tab[i][j]=  parseInt(data1[i].slice(j, j+1))
    }
-  console.log(tab);
 }
+// console.log(tab);
+// console.log(tab_ref);
+
+// for (var i = 0; i < colunm1; i++) {
+//   console.log(tab[0][i]);
+// }
+
+
+//compare data1 and data2
+console.log(tab);
+console.log(tab_ref);
+for (var i = 0; i < 3 ; i++) {
+  for (var j = 0; j < 3; j++) {
+    if (tab[i][j] == tab_ref[i][j]) {
+      number.push(tab[i][j])
+      console.log(number);
+
+    }
+  }
+}
+console.log(number);
