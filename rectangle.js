@@ -50,8 +50,8 @@ for (i=0 ; i<row1-1; i++){
 
 
 //compare data1 and data2
-console.log(tab);
-console.log(tab_ref);
+console.log(tab)
+console.log(tab_ref)
 for (var i = 0; i < 3 ; i++) {
   for (var j = 0; j < 3; j++) {
     if (tab[i][j] == tab_ref[i][j]) {
