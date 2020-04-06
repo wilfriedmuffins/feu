@@ -2,63 +2,71 @@ const [nd, sc, file1, file2] = process.argv;
 
 var fs = require('fs');
 
-var row1
-var colunm1
-var row2
-var colunm2
-var number=[]
-
 
 var data1 = fs.readFileSync(file1, 'utf8').split("\n")
 var data2 = fs.readFileSync(file2, 'utf8').split("\n")
 
- console.log(data1);
-//console.log(data2);
-//number of row1 and colunm1
-row2 = data2.length
-colunm2 = data2[0].length
-row1 = data1.length
-colunm1 = data1[0].length
-console.log(row1);
-console.log(colunm1);
+console.log(data1);
+console.log(data2);
 
-var tab_ref = new Array(row2-1)
+var tab = new Array(data1.length-1)
 
-// console.log(tab_ref);
-for (i=0 ; i<row2-1; i++){
-  tab_ref[i]= new Array(colunm2)
-  for (j=0 ; j<colunm2 ; j++){
-     tab_ref[i][j]= parseInt(data2[i].slice(j, j+1))
+for (i=0 ; i<data1.length-1; i++){
+  tab[i]= new Array(data1[0].length)
+  for (j=0 ; j<data1[0].length ; j++){
+     tab[i][j]= parseInt((data1[i].slice(j, j+1)))
    }
 }
 
+var tab_ref = new Array(data2.length-1)
 
-var tab = new Array(row1-1)
-
-for (i=0 ; i<row1-1; i++){
-  tab[i]= new Array(colunm1)
-  for (j=0 ; j<colunm1 ; j++){
-     tab[i][j]=  parseInt(data1[i].slice(j, j+1))
+for (i=0 ; i<data2.length-1; i++){
+  tab_ref[i]= new Array(data2.length)
+  for (j=0 ; j<data2.length ; j++){
+     tab_ref[i][j]= parseInt((data2[i].slice(j, j+1)))
    }
 }
-// console.log(tab);
-// console.log(tab_ref);
 
-// for (var i = 0; i < colunm1; i++) {
-//   console.log(tab[0][i]);
-// }
+console.log(tab);
+console.log(tab_ref);
 
+var line=0
+var colonne=0
+var line2=0
+var colonne2=0
 
-//compare data1 and data2
-console.log(tab)
-console.log(tab_ref)
-for (var i = 0; i < 3 ; i++) {
-  for (var j = 0; j < 3; j++) {
-    if (tab[i][j] == tab_ref[i][j]) {
-      number.push(tab[i][j])
-      console.log(number);
-
+function is_it_a_match(tab, tab_ref, line, colonne){
+  line2=0
+  while(line2 < tab.length) {
+    colonne2=0
+    while(colonne2 < tab[line2].length /*rajoter ccondition de */){
+      if(tab[line2][colonne2] != tab_ref[line+line2][colonne+colonne2]){
+      return(false);
+      }
+      colonne2++
     }
+    line2++
   }
+  return(true)
 }
-console.log(number);
+
+function rectangle(tab, tab_ref){
+  while(line < tab_ref.length ){
+    colonne=0
+    while( colonne < tab_ref[line].length){
+      if(tab_ref[line][colonne] == tab[0][0]){
+        console.log("found");
+        if (is_it_a_match(tab, tab_ref, line, colonne)) {
+          console.log(colonne+","+line);
+          return(true)
+        }
+      }
+      colonne++
+    }
+    line++
+    console.log("\n");
+  }
+  return(false)
+}
+
+rectangle(tab, tab_ref)
