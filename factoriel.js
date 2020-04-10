@@ -1,12 +1,25 @@
 const [nd, sc, c1] = process.argv;
-//function fac(a){
-let nbre = parseInt(process.argv.slice(2));
-let a = nbre;
-let fac=1
 
-for (i=0 ; i<nbre ; i++){
-  fac*=a;
-  a--;
+var number=parseInt(c1)
+
+function fac(number){
+  if(number >=1){
+    return number*fac(number-1)
+  }else{
+    return 1
+  }
 }
-console.log(fac);
+
+var b = fac(c1)
+console.log(b);
+
+// let nbre = parseInt(process.argv.slice(2));
+// let a = nbre;
+// let fac=1
+//
+// for (i=0 ; i<nbre ; i++){
+//   fac*=a;
+//   a--;
+// }
+//console.log(fac);
 ///sans function
