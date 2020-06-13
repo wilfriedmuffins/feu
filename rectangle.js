@@ -39,7 +39,7 @@ function is_it_a_match(tab, tab_ref, line, colonne){
   line2=0
   while(line2 < tab.length) {
     colonne2=0
-    while(colonne2 < tab[line2].length /*rajoter ccondition de */){
+    while(colonne2 < tab[line2].length /*rajouter ccondition de */){
       if(tab[line2][colonne2] != tab_ref[line+line2][colonne+colonne2]){
       return(false);
       }
