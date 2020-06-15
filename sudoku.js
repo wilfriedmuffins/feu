@@ -84,35 +84,35 @@ console.log(resultatc)
 resultats = check_square(sudoku, 0, 9)
 console.log(resultats)
 
-// function solve_sudoku(sudoku){
-//   for(i=0;i<sudoku.length-1;i++){
-//     for(j=0;j<sudoku[i].length-1;j++){
-//       if(sudoku[i][j]=='_'){
-//         new_value = 1
-//         while (new_value <10){
-//           sudoku[i][j]= new_value
-//           console.log(sudoku[i][j]+" dans le solve_sudoku");
-//
-//          if(check_line(sudoku, i) && check_column(sudoku, j) && check_square(sudoku, i,j)){
-//             sudoku = solve_sudoku(sudoku)
-//             if (sudoku == false){
-//               console.log(sudoku);
-//               return false
-//             }
-//           }
-//           new_value++
-//          }
-//         return false
-//       }
-//     }
-//   }
-//   return false
-// }
-//
-// function check_sudoku(sudoku){
-//   sudoku = solve_sudoku(sudoku)
-//   if (sudoku == false) console.log("erreur")
-//   else print_sudoku(sudoku1)
-// }
-//
-// check_sudoku(sudoku)
+function solve_sudoku(sudoku){
+  for(i=0;i<sudoku.length-1;i++){
+    for(j=0;j<sudoku[i].length-1;j++){
+      if(sudoku[i][j]=='_'){
+        new_value = 1
+        while (new_value <10){
+          sudoku[i][j]= new_value
+          console.log(sudoku[i][j]+" dans le solve_sudoku");
+
+         if(check_line(sudoku, i) && check_column(sudoku, j) && check_square(sudoku, i,j)){
+            sudoku = solve_sudoku(sudoku)
+            if (sudoku == false){
+              console.log(sudoku);
+              return false
+            }
+          }
+          new_value++
+         }
+        return false
+      }
+    }
+  }
+  return false
+}
+
+function check_sudoku(sudoku){
+  sudoku = solve_sudoku(sudoku)
+  if (sudoku == false) console.log("erreur")
+  else print_sudoku(sudoku1)
+}
+
+check_sudoku(sudoku)
